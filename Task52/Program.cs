@@ -12,7 +12,6 @@ int[,] CreateMtrixRndInt(int row, int col, int min, int max)
     Random rnd = new Random();
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
-
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
             matrix[i, j] = rnd.Next(min, max);
@@ -34,37 +33,24 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[] MeanElemCol(int[,] array)
+void MeanElemCol(int[,] array)
 {
     int col = array.GetLength(1);
-    int[] result = new int[col];
+    // int[] result = new int[col];
     // double[] res = new double[result.Length];
     for (int j = 0; j < array.GetLength(1); j++)
     {
+        double mean = 0;
         for (int i = 0; i < array.GetLength(0); i++)
         {
-            if (i<array.GetLength(0))
-                result[col] += array[i, j];
-            else
-                result[result.Length] += result[col] / i;
+            mean +=array[i, j];
         }
-    }
-    return result;
+        Console.Write( $"{mean/array.GetLength(0)}  ");
+    }    
 }
 
-void PrintArray(int[] array)
-{
-    Console.Write("[");
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (i < array.Length - 1) Console.Write($"{array[i]},");
-        else Console.Write(array[i]);
-    }
-    Console.WriteLine("]");
-}
 
 int[,] matrix = CreateMtrixRndInt(4, 4, 1, 10);
 PrintMatrix(matrix);
-int[] array = MeanElemCol(matrix);
-PrintArray(array);
+MeanElemCol(matrix);
 
