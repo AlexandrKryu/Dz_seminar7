@@ -43,14 +43,14 @@ void MeanElemCol(int[,] array)
         double mean = 0;
         for (int i = 0; i < array.GetLength(0); i++)
         {
-            mean +=array[i, j];
+            mean += array[i, j];
         }
-        Console.Write( $"{mean/array.GetLength(0)}  ");
-    }    
+        Console.Write($"{Math.Round((mean / array.GetLength(0)), 3),4}  ");
+    }
 }
 
 
-int[,] matrix = CreateMtrixRndInt(4, 4, 1, 10);
+int[,] matrix = CreateMtrixRndInt(4, 4, 20, 100);
 PrintMatrix(matrix);
 MeanElemCol(matrix);
 
